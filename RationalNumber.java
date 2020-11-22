@@ -43,12 +43,23 @@ public class RationalNumber extends RealNumber {
 	}
 
 	public static int gcd(int a, int b) {
-		while (a != 0 && b != 0) {
-			int c = a % b;
+		if (a < b) {
+			int temp = a;
 			a = b;
-			b = c;
+			b = temp;
 		}
-		return a;
+		int c = a%b;
+		if (c == 0) {
+			return b;
+		}
+		else {
+			while (c != 0) {
+				c = a % b;
+				a = b;
+				b = c;
+			}
+			return a;
+		}
 	}
 
 	private void reduce() {
