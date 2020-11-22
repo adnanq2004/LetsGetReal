@@ -57,4 +57,16 @@ public class RationalNumber extends RealNumber {
 		denominator = denominator/rate;
 	}
 
+	public RationalNumber multiply(RationalNumber other) {
+		RationalNumber val = new RationalNumber((numerator * other.numerator), (denominator * other.denominator));
+		return val;
+	}
+
+	public RationalNumber divide(RationalNumber other) {
+		RationalNumber temp = new RationalNumber(other.denominator, other.numerator);
+		return this.multiply(temp);
+	}
+
+	
+
 }
