@@ -32,6 +32,10 @@ public class RationalNumber extends RealNumber {
 		return val;
 	}
 
-
+	public boolean equals(RationalNumber other) {
+		boolean val = false;
+		val = (numerator == other.numerator) && (denominator == other.denominator);
+		return val;
+	}
 
 }
