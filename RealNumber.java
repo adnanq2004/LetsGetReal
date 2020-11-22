@@ -35,6 +35,14 @@ public class RealNumber {
 		return val;
 	}
 
+	public RealNumber divide(RealNumber other) {
+		RealNumber val = new RealNumber(value / other.value);
+		return val;
+	}
 
+	public RealNumber subtract(RealNumber other) {
+		RealNumber val = new RealNumber(value - other.value);
+		return val;
+	}
 
 }
