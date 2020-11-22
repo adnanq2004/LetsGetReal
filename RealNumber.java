@@ -30,4 +30,11 @@ public class RealNumber {
 		return val;
 	}
 
+	public RealNumber multiply(RealNumber other) {
+		RealNumber val = new RealNumber(value * other.value);
+		return val;
+	}
+
+
+
 }
