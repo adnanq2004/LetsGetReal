@@ -38,4 +38,17 @@ public class RationalNumber extends RealNumber {
 		return val;
 	}
 
+	public String toString() {
+		return "" + numerator + "/" + denominator;
+	}
+
+	public static int gcd(int a, int b) {
+		while (a != 0 && b != 0) {
+			int c = a % b;
+			a = b;
+			b = c;
+		}
+		return a;
+	}
+
 }
