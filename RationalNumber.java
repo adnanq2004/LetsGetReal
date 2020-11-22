@@ -79,13 +79,14 @@ public class RationalNumber extends RealNumber {
 	}
 	
 	public RationalNumber add(RationalNumber other) {
-		int multiplya = other.denominator;
-		int multiplyb = denominator;
-		RationalNumber a = new RationalNumber(numerator * multiplya, denominator * multiplya);
-		RationalNumber b = new RationalNumber(other.numerator * multiplyb, other.denominator * multiplyb);
-		RationalNumber val = new RationalNumber(numerator * multiplya + other.numerator * multiplyb, other.denominator * denominator);
+		RationalNumber val = new RationalNumber(numerator * other.denominator + other.numerator * denominator, other.denominator * denominator);
 		val.reduce();
 		return val;
+	}
+
+	public RationalNumber subtract(RationalNumber other) {
+		RationalNumber temp = new RationalNumber(other.numerator * -1, other.denominator);
+		return add(temp);
 	}
 
 }
