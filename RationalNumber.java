@@ -34,12 +34,20 @@ public class RationalNumber extends RealNumber {
 
 	public boolean equals(RationalNumber other) {
 		boolean val = false;
-		val = (numerator == other.numerator) && (denominator == other.denominator);
+		val = (numerator == other.getNumerator()) && (denominator == other.getDenominator());
 		return val;
 	}
 
 	public String toString() {
-		return "" + numerator + "/" + denominator;
+		if (getNumerator() == 0 || getDenominator() == 0) {
+			return "0";
+		}
+		else if (getDenominator() == 1) {
+			return "" + getNumerator();
+		}
+		else {
+			return "" + getNumerator() + "/" + getDenominator();
+		}
 	}
 
 	public static int gcd(int a, int b) {
