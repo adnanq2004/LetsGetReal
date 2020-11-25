@@ -1,10 +1,10 @@
-public class RationalNumber extends RealNumber {
+public class RationalNumber extends Number {
 
 	private int numerator;
 	private int denominator;
 
 	public RationalNumber(int nume, int deno) {
-		super(0.0);
+		//super(0.0);
 		if (deno == 0) {
 			numerator = 0;
 			denominator = 1;
@@ -36,8 +36,8 @@ public class RationalNumber extends RealNumber {
 		boolean val = false;
 		val = (numerator == other.getNumerator()) && (denominator == other.getDenominator());
 		return val;
-	}
-
+	} 
+	
 	public String toString() {
 		if (getNumerator() == 0 || getDenominator() == 0) {
 			return "0";
