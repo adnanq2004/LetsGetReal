@@ -7,7 +7,7 @@ public abstract class Number {
 	}
 
 	public int compareTo(Number other) {
-		return value - other.value;
+		return getValue() - other.getValue();
 		/*if (equals(other)) {
 			return 0;
 		}
