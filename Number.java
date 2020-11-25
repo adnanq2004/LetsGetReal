@@ -2,18 +2,20 @@ public abstract class Number {
 
 	private int value;
 
-	public int getValue() {
-		return value;
-	}
+	public abstract double getValue();
 
 	public int compareTo(Number other) {
-		return getValue() - other.getValue();
-		/*if (equals(other)) {
+		if (equals(other)) {
 			return 0;
 		}
 		else {
-			if ;
-		}*/
+			if (getValue() < other.getValue()) {
+				return -1;
+			}
+			else {
+				return 1;
+			}
+		}
 	}
 
 	public boolean equals(Number other) {
@@ -21,7 +23,7 @@ public abstract class Number {
 			return (getValue() == 0 && other.getValue() == 0);
 		}
 		else {
-			int temp = getValue() - other.getValue();
+			double temp = getValue() - other.getValue();
 			temp = temp/getValue();
 			return (temp <= .00001);
 		}
