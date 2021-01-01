@@ -9,14 +9,40 @@ public class RationalNumber extends Number {
 			numerator = 0;
 			denominator = 1;
 		}
+		else if (deno < 0) {
+			numerator = nume * -1;
+			denominator = deno * -1;
+		}
+		else if (nume == 0) {
+			numerator = 0;
+			denominator = deno;
+		}
 		else {
+			int a = deno;
+			int b = nume;
+			int remainder = a%b;
+                	while (remainder != 0) {
+                        	a = b;
+                        	//System.out.println(a);
+                        	b = remainder;
+                        	//System.out.println(b);
+                        	remainder = a%b;
+                        	//System.out.println("");
+                	}
+                	int gcd = b;
+			if ((gcd != 1)) {
+				nume = nume / gcd;
+                                deno = deno / gcd;
+                        }
 			numerator = nume;
 			denominator = deno;
 		}
 	}
 
 	public double getValue() {
-		return 0.0;
+		double val = ((double) numerator/ (double) denominator);
+		//System.out.println("value " + val);
+		return val;
 	}
 
 	public int getNumerator() {
@@ -33,21 +59,30 @@ public class RationalNumber extends Number {
 	}
 
 	public boolean equals(RationalNumber other) {
-		boolean val = false;
-		val = (numerator == other.getNumerator()) && (denominator == other.getDenominator());
+		boolean val;
+		//val = (Math.abs((numerator - other.numerator)/numerator) <= .00001) && (Math.abs((denominator - other.denominator)/denominator) <= .00001);
+		if (numerator == 0 && other.numerator == 0) {
+			val = true;
+		}
+		else if (denominator == 0 && other.denominator == 0) {
+			val = true;
+		}
+		else {
+			val = (numerator == other.numerator) && (denominator == other.denominator);
+		}
 		return val;
 	} 
 	
 	public String toString() {
-		if (getNumerator() == 0 || getDenominator() == 0) {
+		/*if (getNumerator() == 0 || getDenominator() == 0) {
 			return "0";
 		}
 		else if (getDenominator() == 1) {
 			return "" + getNumerator();
 		}
-		else {
+		else {*/
 			return "" + getNumerator() + "/" + getDenominator();
-		}
+		//}
 	}
 
 	public static int gcd(int a, int b) {
@@ -56,24 +91,23 @@ public class RationalNumber extends Number {
 			a = b;
 			b = temp;
 		}
-		int c = a%b;
-		if (c == 0) {
-			return b;
+		int remainder = a%b;
+		while (remainder != 0) {
+			a = b;
+			//System.out.println(a);
+			b = remainder;
+			//System.out.println(b);
+			remainder = a%b;
+			//System.out.println("");
 		}
-		else {
-			while (c != 0) {
-				c = a % b;
-				a = b;
-				b = c;
-			}
-			return a;
-		}
+		return b;
 	}
 
 	private void reduce() {
+		//System.out.println("");
 		int rate = gcd(denominator, numerator);
-		numerator = numerator/rate;
-		denominator = denominator/rate;
+		this.numerator = this.numerator/rate;
+		this.denominator = this.denominator/rate;
 	}
 
 	public RationalNumber multiply(RationalNumber other) {
@@ -83,7 +117,8 @@ public class RationalNumber extends Number {
 
 	public RationalNumber divide(RationalNumber other) {
 		RationalNumber temp = new RationalNumber(other.denominator, other.numerator);
-		return this.multiply(temp);
+		RationalNumber val = this.multiply(temp);
+		return val;
 	}
 	
 	public RationalNumber add(RationalNumber other) {
@@ -94,7 +129,8 @@ public class RationalNumber extends Number {
 
 	public RationalNumber subtract(RationalNumber other) {
 		RationalNumber temp = new RationalNumber(other.numerator * -1, other.denominator);
-		return add(temp);
+		RationalNumber val = add(temp);
+		return val;
 	}
 
 }
